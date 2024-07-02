@@ -1012,3 +1012,82 @@ exit:
     return return_value;
 }
 /*[clinic end generated code: output=7d03f84f77342496 input=a9049054013a1b77]*/
+
+
+PyDoc_STRVAR(math_sec__doc__, "sec($module, x, /)\n--\n\n"
+      "Return the sec of x (measured in radians).");
+
+static PyObject *
+math_sec(PyObject *module, PyObject *arg)
+{
+    PyObject *return_value = NULL;
+    double x;
+
+    if (PyFloat_CheckExact(arg)) {
+        x = PyFloat_AS_DOUBLE(arg);
+    }
+    else
+    {
+        x = PyFloat_AsDouble(arg);
+        if (x == -1.0 && PyErr_Occurred()) {
+            goto exit;
+        }
+    }
+
+    x = 1.0 / cos(x);
+
+    return_value = PyFloat_FromDouble(x);
+exit:
+    return return_value;
+}
+
+PyDoc_STRVAR(math_cot__doc__, "cot($module, x, /)\n--\n\n Return the cot of x (measured in radians).");
+
+static PyObject *
+math_cot(PyObject *module, PyObject *arg)
+{
+    PyObject *return_value = NULL;
+    double x;
+
+    if (PyFloat_CheckExact(arg)) {
+        x = PyFloat_AS_DOUBLE(arg);
+    }
+    else
+    {
+        x = PyFloat_AsDouble(arg);
+        if (x == -1.0 && PyErr_Occurred()) {
+            goto exit;
+        }
+    }
+
+    x = cos(x) / sin(x);
+
+    return_value = PyFloat_FromDouble(x);
+exit:
+    return return_value;
+}
+
+PyDoc_STRVAR(math_cosec__doc__, "cosec($module, x, /)\n--\n\n Return the cosec of x (measured in radians).");
+
+static PyObject *
+math_cosec(PyObject *module, PyObject *arg) {
+    PyObject *return_value = NULL;
+    double x;
+
+    if (PyFloat_CheckExact(arg)) {
+        x = PyFloat_AS_DOUBLE(arg);
+    }
+    else
+    {
+        x = PyFloat_AsDouble(arg);
+        if (x == -1.0 && PyErr_Occurred()) {
+            goto exit;
+        }
+    }
+
+    x = 1 / sin(x);
+
+    return_value = PyFloat_FromDouble(x);
+exit:
+    return return_value;
+}
