@@ -1895,6 +1895,48 @@ class MathTests(unittest.TestCase):
         self.ftest('tanh(-inf)', math.tanh(NINF), -1)
         self.assertTrue(math.isnan(math.tanh(NAN)))
 
+    
+    def testSec(self):
+        self.assertRaises(TypeError, math.sec)
+        self.ftest('sec(0)', math.sec(0), 1)
+        self.ftest('sec(pi/4)', math.sec(math.pi/4), 1.414213562373095)
+        self.ftest('sec(-pi/4)', math.sec(-math.pi/4), 1.414213562373095)
+        try:
+            self.assertTrue(math.isnan(math.sec(INF)))
+            self.assertTrue(math.isnan(math.sec(NINF)))
+        except:
+            self.assertRaises(ValueError, math.sec, INF)
+            self.assertRaises(ValueError, math.sec, NINF)
+        self.assertTrue(math.isnan(math.sec(NAN)))
+
+        
+    def testCot(self):
+        self.assertRaises(TypeError, math.cot)
+        self.ftest('cot(0)', math.cot(0), INF)
+        self.ftest('cot(pi/4)', math.cot(math.pi/4), 1.0000000000000002)
+        self.ftest('cot(-pi/4)', math.cot(-math.pi/4), -1.0000000000000002)
+        try:
+            self.assertTrue(math.isnan(math.cot(INF)))
+            self.assertTrue(math.isnan(math.cot(NINF)))
+        except:
+            self.assertRaises(ValueError, math.cot, INF)
+            self.assertRaises(ValueError, math.cot, NINF)
+        self.assertTrue(math.isnan(math.cot(NAN)))
+
+    
+    def testCosec(self):
+        self.assertRaises(TypeError, math.cosec)
+        self.ftest('cosec(0)', math.cosec(0), INF)
+        self.ftest('cosec(pi/4)', math.cosec(math.pi/4), 1.4142135623730951)
+        self.ftest('cosec(-pi/4)', math.cosec(-math.pi/4), -1.4142135623730951)
+        try:
+            self.assertTrue(math.isnan(math.cosec(INF)))
+            self.assertTrue(math.isnan(math.cosec(NINF)))
+        except:
+            self.assertRaises(ValueError, math.cosec, INF)
+            self.assertRaises(ValueError, math.cosec, NINF)
+        self.assertTrue(math.isnan(math.cosec(NAN)))
+
     @requires_IEEE_754
     def testTanhSign(self):
         # check that tanh(-0.) == -0. on IEEE 754 systems
